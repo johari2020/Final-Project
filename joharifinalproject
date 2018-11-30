@@ -14,18 +14,17 @@ SCREEN_HEIGHT = 800
 
 blue = Color(0x2EFEC8, 1.0)
 black = Color(0x000000, 1.0)
-pink = Color(0xffd6d1, 1.0)
+pink = Color(0x9b8ece, 1.0)
 red = Color(0xFF5733, 1.0)
 white = Color(0xFFFFFF, 1.0)
-red = Color(0xffbaf0, 1.0)
-green = Color(0x9cf5f0, 1.0)
+green = Color(0x77d4ad, 1.0)
 blue = Color(0xc6ffe7, 1.0)
 black = Color(0x000000, 1.0)
 white = Color(0xffffff, 1.0)
-grey = Color(0xC0C0C0, 1.0) 
+grey = Color(0x5ca586, 1.0) 
 purple = Color(0xc8beff, 1.0)
 
-thinline = LineStyle(2, black)
+thinline = LineStyle(2, grey)
 blkline = LineStyle(1, black)
 noline = LineStyle(0, white)
 coolline = LineStyle(1, grey)
@@ -34,21 +33,62 @@ redline = LineStyle(1, red)
 greenline = LineStyle(1, green)
 gridline = LineStyle(1, grey)
 
-grid=RectangleAsset(30,30,gridline,white)
-
 class Paddle(Sprite):
     
-    asset = RectangleAsset(20, 50, thinline, blue)
-
+    asset = RectangleAsset(15, 70, thinline, blue)
     def __init__(self, position):
-        super().__init__(Wall.asset, position)
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Paddle.asset, position)
+        
+class Ball(Sprite): 
+    
+    asset = CircleAsset(15, noline, black)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Ball.asset, position)
 
-class Platformer(App):
+class FinalProject(App):
     
     def __init__(self):
         super().__init__()
         bg_asset = RectangleAsset(1000, 800, noline, pink)
         bg = Sprite(bg_asset, (0,0))
         self.asset = [0,0] 
-myapp = Platformer()
+        
+        Paddle((950,220))
+        Ball((400,220))
+        
+        FinalProject.listenKeyEvent('keydown', 'up arrow', self.uvelocity)
+        FinalProject.listenKeyEvent('keyup', 'up arrow', self.uvelocity2)
+        FinalProject.listenKeyEvent('keydown', 'down arrow', self.dvelocity)
+        FinalProject.listenKeyEvent('keyup', 'down arrow', self.dvelocity2)
+    
+    def step(self):
+        for paddle in self.getSpritesbyClass(Paddle):
+            paddle.y += paddle.vy
+
+        
+#up velocity of paddle    
+    def uvelocity(self, event): 
+            for paddle in self.getSpritesbyClass(Paddle):
+                paddle.vy = -5
+    def uvelocity2(self, event): 
+            for paddle in self.getSpritesbyClass(Paddle):
+                paddle.vy = 0
+    
+    #down velocity of paddle
+    def dvelocity(self, event): 
+            for paddle in self.getSpritesbyClass(Paddle):
+                paddle.vy = 5
+    def dvelocity2(self, event): 
+            for paddle in self.getSpritesbyClass(Paddle):
+                paddle.vy = 0
+                
+    def mouse(self, event):
+            self.asset[0]= event.x
+            self.asset[1] = event.y
+            
+myapp = FinalProject()
 myapp.run()
