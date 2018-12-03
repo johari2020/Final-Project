@@ -82,7 +82,16 @@ class FinalProject(App):
     
     def step(self):
         for paddle in self.getSpritesbyClass(Paddle):
-            paddle.y += paddle.vy
+            for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                m=0
+                if bottombarrier.collidingWith(paddle): 
+                    m+=1
+            if m>0 and paddle.vy>=0: 
+                    paddle.vy=0
+            else: 
+                    paddle.vy=paddle.vy
+        paddle.y += paddle.vy
+            
 
     
         
