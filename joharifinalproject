@@ -48,6 +48,17 @@ class Ball(Sprite):
         self.vx = 0 
         self.vy = 0
         super().__init__(Ball.asset, position)
+        
+class TopBarrier(Sprite): 
+    
+    asset = RectangleAsset(1000, 4, noline, black)
+    def __init__(self, position):
+        super().__init__(TopBarrier.asset, position)
+class BottomBarrier(Sprite): 
+    
+    asset = RectangleAsset(1000, 4, noline, black)
+    def __init__(self, position):
+        super().__init__(BottomBarrier.asset, position)
 
 class FinalProject(App):
     
@@ -58,7 +69,11 @@ class FinalProject(App):
         self.asset = [0,0] 
         
         Paddle((950,220))
-        Ball((400,220))
+        TopBarrier((0,0))
+        BottomBarrier((0,478))
+        
+        FinalProject.listenMouseEvent('mousemove', self.mouse) 
+        FinalProject.listenKeyEvent('keydown', 'b', self.ball)
         
         FinalProject.listenKeyEvent('keydown', 'up arrow', self.uvelocity)
         FinalProject.listenKeyEvent('keyup', 'up arrow', self.uvelocity2)
@@ -69,6 +84,7 @@ class FinalProject(App):
         for paddle in self.getSpritesbyClass(Paddle):
             paddle.y += paddle.vy
 
+    
         
 #up velocity of paddle    
     def uvelocity(self, event): 
@@ -89,6 +105,10 @@ class FinalProject(App):
     def mouse(self, event):
             self.asset[0]= event.x
             self.asset[1] = event.y
+            
+    def ball(self, event):
+        Ball((self.asset[0], self.asset[1]))
+        
             
 myapp = FinalProject()
 myapp.run()
