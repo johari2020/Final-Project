@@ -53,7 +53,16 @@ class TopBarrier(Sprite):
     
     asset = RectangleAsset(1000, 4, noline, black)
     def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
         super().__init__(TopBarrier.asset, position)
+        
+class Top(Sprite): 
+    
+    asset = RectangleAsset(4, 4, noline, black)
+    def __init__(self, position):
+        super().__init__(TopBarrier.asset, position)
+        
 class BottomBarrier(Sprite): 
     
     asset = RectangleAsset(1000, 4, noline, black)
@@ -71,6 +80,7 @@ class FinalProject(App):
         Paddle((950,220))
         TopBarrier((0,0))
         BottomBarrier((0,478))
+        Top((950,220))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
         FinalProject.listenKeyEvent('keydown', 'b', self.ball)
@@ -79,18 +89,32 @@ class FinalProject(App):
         FinalProject.listenKeyEvent('keyup', 'up arrow', self.uvelocity2)
         FinalProject.listenKeyEvent('keydown', 'down arrow', self.dvelocity)
         FinalProject.listenKeyEvent('keyup', 'down arrow', self.dvelocity2)
+        
+        FinalProject.listenKeyEvent('keydown', 'up arrow', self.tuvelocity)
+        FinalProject.listenKeyEvent('keyup', 'up arrow', self.tuvelocity2)
+        FinalProject.listenKeyEvent('keydown', 'down arrow', self.tdvelocity)
+        FinalProject.listenKeyEvent('keyup', 'down arrow', self.tdvelocity2)
     
     def step(self):
         for paddle in self.getSpritesbyClass(Paddle):
-            for bottombarrier in self.getSpritesbyClass(BottomBarrier):
-                m=0
-                if bottombarrier.collidingWith(paddle): 
-                    m+=1
+            for top in self.getSpritesbyClass(Top):
+                for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                    m=0
+                    if bottombarrier.collidingWith(paddle): 
+                        m+=1
+                for topbarrier in self.getSpritesbyClass(TopBarrier):
+                    n=0
+                    if topbarrier.collidingWith(paddle): 
+                        n+=1    
             if m>0 and paddle.vy>=0: 
                     paddle.vy=0
+                
+            elif n>0 and paddle.vy>=0: 
+                    paddle.vy=0
             else: 
-                    paddle.vy=paddle.vy
-        paddle.y += paddle.vy
+                paddle.vy=paddle.vy
+            paddle.y += paddle.vy
+            top.y += top.vy
             
 
     
@@ -107,16 +131,35 @@ class FinalProject(App):
     def dvelocity(self, event): 
             for paddle in self.getSpritesbyClass(Paddle):
                 paddle.vy = 5
+            
     def dvelocity2(self, event): 
             for paddle in self.getSpritesbyClass(Paddle):
                 paddle.vy = 0
-                
+    
+    def tdvelocity(self, event): 
+            for top in self.getSpritesbyClass(Top):
+                top.vy = 5
+            
+    def tdvelocity2(self, event): 
+            for top in self.getSpritesbyClass(Top):
+                top.vy = 0
+    
+    def tuvelocity(self, event): 
+            for top in self.getSpritesbyClass(Top):
+                top.vy = -5
+            
+    def tuvelocity2(self, event): 
+            for top in self.getSpritesbyClass(Top):
+                top.vy = 0
+            
+    
     def mouse(self, event):
             self.asset[0]= event.x
             self.asset[1] = event.y
             
     def ball(self, event):
         Ball((self.asset[0], self.asset[1]))
+    
         
             
 myapp = FinalProject()
