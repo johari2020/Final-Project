@@ -53,14 +53,15 @@ class TopBarrier(Sprite):
     
     asset = RectangleAsset(1000, 4, noline, black)
     def __init__(self, position):
-        self.vx = 0 
-        self.vy = 0
+        
         super().__init__(TopBarrier.asset, position)
         
 class Top(Sprite): 
     
     asset = RectangleAsset(4, 4, noline, black)
     def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
         super().__init__(TopBarrier.asset, position)
         
 class BottomBarrier(Sprite): 
@@ -80,7 +81,7 @@ class FinalProject(App):
         Paddle((950,220))
         TopBarrier((0,0))
         BottomBarrier((0,478))
-        Top((950,220))
+        Top((500,220))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
         FinalProject.listenKeyEvent('keydown', 'b', self.ball)
@@ -104,15 +105,22 @@ class FinalProject(App):
                         m+=1
                 for topbarrier in self.getSpritesbyClass(TopBarrier):
                     n=0
-                    if topbarrier.collidingWith(paddle): 
+                    if topbarrier.collidingWith(top): 
                         n+=1    
             if m>0 and paddle.vy>=0: 
                     paddle.vy=0
-                
-            elif n>0 and paddle.vy>=0: 
-                    paddle.vy=0
+                    top.vy=0
             else: 
                 paddle.vy=paddle.vy
+                top.vy=top.vy
+                
+            if n>0 and paddle.vy>=0: 
+                    paddle.vy=0
+                    top.vy=0
+            else: 
+                paddle.vy=paddle.vy
+                top.vy=top.vy
+                
             paddle.y += paddle.vy
             top.y += top.vy
             
