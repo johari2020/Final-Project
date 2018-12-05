@@ -29,7 +29,8 @@ greenline = LineStyle(1, green)
 gridline = LineStyle(1, grey)
 
 
-
+#Figure out how to get initial velocity working so that then can move on to what happens when the ball hits the paddle. . . 
+#Maybe go ahead and start working on other side while I still sort of understand this program. .. 
 class Ball(Sprite): 
     
     asset = CircleAsset(15, noline, black)
