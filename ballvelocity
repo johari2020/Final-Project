@@ -28,19 +28,20 @@ redline = LineStyle(1, red)
 greenline = LineStyle(1, green)
 gridline = LineStyle(1, grey)
 
-bint = random.randint(1,3)
-if bint==1:
-    bivy=-3
-if bint==2: 
-    bivy=0
-if bint==3: 
-    bivy=3
+
 
 class Ball(Sprite): 
     
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
-        self.vx = 3 
+        bint = random.randint(1,3)
+        if bint==1:
+            bivy=-3
+        if bint==2: 
+            bivy=0
+        if bint==3: 
+            bivy=3
+        self.vx = 30 
         self.vy = bivy
         super().__init__(Ball.asset, position)
         
