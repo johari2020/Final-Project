@@ -56,6 +56,12 @@ class TopBarrier(Sprite):
         
         super().__init__(TopBarrier.asset, position)
         
+class BottomBarrier(Sprite): 
+    
+    asset = RectangleAsset(1000, 4, noline, black)
+    def __init__(self, position):
+        super().__init__(BottomBarrier.asset, position)
+        
 class Top(Sprite): 
     
     asset = RectangleAsset(15, 5, noline, pink)
@@ -63,12 +69,32 @@ class Top(Sprite):
         self.vx = 0 
         self.vy = 0
         super().__init__(Top.asset, position)
-        
-class BottomBarrier(Sprite): 
+
+
+class One(Sprite): 
     
-    asset = RectangleAsset(1000, 4, noline, black)
+    asset = RectangleAsset(3, 23, noline, black)
     def __init__(self, position):
-        super().__init__(BottomBarrier.asset, position)
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(One.asset, position)
+
+class Two(Sprite): 
+    
+    asset = RectangleAsset(3, 23, noline, white)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Two.asset, position)
+        
+class Three(Sprite): 
+
+    asset = RectangleAsset(3, 23, noline, grey)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Three.asset, position)
+        
 
 class FinalProject(App):
     
@@ -82,6 +108,9 @@ class FinalProject(App):
         TopBarrier((0,0))
         BottomBarrier((0,478))
         Top((952,220))
+        One((952,220))
+        Two((952,243))
+        Three((952,269))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
         FinalProject.listenKeyEvent('keydown', 'b', self.ball)
