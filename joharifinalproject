@@ -134,6 +134,11 @@ class FinalProject(App):
         FinalProject.listenKeyEvent('keyup', 'up arrow', self.twuvelocity2)
         FinalProject.listenKeyEvent('keydown', 'down arrow', self.twdvelocity)
         FinalProject.listenKeyEvent('keyup', 'down arrow', self.twdvelocity2)
+        
+        FinalProject.listenKeyEvent('keydown', 'up arrow', self.thuvelocity)
+        FinalProject.listenKeyEvent('keyup', 'up arrow', self.thuvelocity2)
+        FinalProject.listenKeyEvent('keydown', 'down arrow', self.thdvelocity)
+        FinalProject.listenKeyEvent('keyup', 'down arrow', self.thdvelocity2)
     
     def step(self):
         for paddle in self.getSpritesbyClass(Paddle):
@@ -236,7 +241,23 @@ class FinalProject(App):
             for two in self.getSpritesbyClass(Two):
                 two.vy = 0
 #three velocity
+    def thdvelocity(self, event): 
+        for three in self.getSpritesbyClass(Three):
+            three.vy = 5
+            
+    def thdvelocity2(self, event): 
+            for three in self.getSpritesbyClass(Three):
+                three.vy = 0
+            
     
+    def thuvelocity(self, event): 
+            for three in self.getSpritesbyClass(Three):
+                three.vy = -5
+            
+            
+    def thuvelocity2(self, event): 
+            for three in self.getSpritesbyClass(Three):
+                three.vy = 0
     def mouse(self, event):
             self.asset[0]= event.x
             self.asset[1] = event.y
