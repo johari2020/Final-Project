@@ -157,13 +157,22 @@ class FinalProject(App):
                         if m>0 and paddle.vy>=0: 
                                 paddle.vy= -paddle.vy
                                 top.vy=-top.vy
+                                one.vy=-one.vy
+                                two.vy=-two.vy
+                                three.vy=-three.vy
                             
                         if n>0 and paddle.vy!=0: 
                                 paddle.vy= -paddle.vy
                                 top.vy=-top.vy
+                                one.vy=-one.vy
+                                two.vy=-two.vy
+                                three.vy=-three.vy
                         else: 
                             paddle.vy=paddle.vy
                             top.vy=top.vy
+                            one.vy=one.vy
+                            two.vy=two.vy
+                            three.vy=three.vy
                             
                         paddle.y += paddle.vy
                         top.y += top.vy
