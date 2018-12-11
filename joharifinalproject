@@ -146,40 +146,45 @@ class FinalProject(App):
                 for one in self.getSpritesbyClass(One):
                     for two in self.getSpritesbyClass(Two):
                         for three in self.getSpritesbyClass(Three):
-                            for bottombarrier in self.getSpritesbyClass(BottomBarrier):
-                                m=0
-                                if bottombarrier.collidingWith(paddle): 
-                                    m+=1
-                            for topbarrier in self.getSpritesbyClass(TopBarrier):
-                                n=0
-                                if topbarrier.collidingWith(top): 
-                                    n+=1    
-                        if m>0 and paddle.vy>=0: 
-                                paddle.vy= -paddle.vy
-                                top.vy=-top.vy
-                                one.vy=-one.vy
-                                two.vy=-two.vy
-                                three.vy=-three.vy
+                            for ball in self.getSpritesbyClass(Ball): 
+                             
+                                
+                                
                             
-                        if n>0 and paddle.vy!=0: 
-                                paddle.vy= -paddle.vy
-                                top.vy=-top.vy
-                                one.vy=-one.vy
-                                two.vy=-two.vy
-                                three.vy=-three.vy
-                        else: 
-                            paddle.vy=paddle.vy
-                            top.vy=top.vy
-                            one.vy=one.vy
-                            two.vy=two.vy
-                            three.vy=three.vy
+                                for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                                    m=0
+                                    if bottombarrier.collidingWith(paddle): 
+                                        m+=1
+                                for topbarrier in self.getSpritesbyClass(TopBarrier):
+                                    n=0
+                                    if topbarrier.collidingWith(top): 
+                                        n+=1    
+                            if m>0 and paddle.vy>=0: 
+                                    paddle.vy= -paddle.vy
+                                    top.vy=-top.vy
+                                    one.vy=-one.vy
+                                    two.vy=-two.vy
+                                    three.vy=-three.vy
+                                
+                            if n>0 and paddle.vy!=0: 
+                                    paddle.vy= -paddle.vy
+                                    top.vy=-top.vy
+                                    one.vy=-one.vy
+                                    two.vy=-two.vy
+                                    three.vy=-three.vy
+                            else: 
+                                paddle.vy=paddle.vy
+                                top.vy=top.vy
+                                one.vy=one.vy
+                                two.vy=two.vy
+                                three.vy=three.vy
+                                
+                            paddle.y += paddle.vy
+                            top.y += top.vy
                             
-                        paddle.y += paddle.vy
-                        top.y += top.vy
-                        
-                        one.y += one.vy
-                        two.y += two.vy
-                        three.y += three.vy
+                            one.y += one.vy
+                            two.y += two.vy
+                            three.y += three.vy
             
 
     
@@ -275,6 +280,7 @@ class FinalProject(App):
         for r in FinalProject.getSpritesbyClass(Ball):
             r.destroy()
         Ball((self.asset[0], self.asset[1]))
+    
     
         
             
