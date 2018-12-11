@@ -272,6 +272,8 @@ class FinalProject(App):
             self.asset[1] = event.y
             
     def ball(self, event):
+        for r in FinalProject.getSpritesbyClass(Ball):
+            r.destroy()
         Ball((self.asset[0], self.asset[1]))
     
         
