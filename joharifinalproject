@@ -8,7 +8,7 @@ from ggame import App, Color, LineStyle, Sprite, RectangleAsset, CircleAsset, El
 myapp = App()
 
 from math import floor
-import random 
+
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 800
 
@@ -33,14 +33,6 @@ redline = LineStyle(1, red)
 greenline = LineStyle(1, green)
 gridline = LineStyle(1, grey)
 
-bint = random.randint(1,3)
-if bint==1:
-    bivy=-3
-if bint==2: 
-    bivy=0
-if bint==3: 
-    bivy=3
-    
 class Paddle(Sprite):
     
     asset = RectangleAsset(15, 70, thinline, blue)
@@ -53,8 +45,8 @@ class Ball(Sprite):
     
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
-        self.vx = 3 
-        self.vy = bivy
+        self.vx = 0 
+        self.vy = 0
         super().__init__(Ball.asset, position)
         
 class TopBarrier(Sprite): 
@@ -77,6 +69,7 @@ class Top(Sprite):
         self.vx = 0 
         self.vy = 0
         super().__init__(Top.asset, position)
+
 
 class One(Sprite): 
     
@@ -153,44 +146,31 @@ class FinalProject(App):
                 for one in self.getSpritesbyClass(One):
                     for two in self.getSpritesbyClass(Two):
                         for three in self.getSpritesbyClass(Three):
-                            for ball in self.getSpritesbyClass(Ball):
-                                for bottombarrier in self.getSpritesbyClass(BottomBarrier):
-                                    m=0
-                                    if bottombarrier.collidingWith(paddle): 
-                                        m+=1
-                                for topbarrier in self.getSpritesbyClass(TopBarrier):
-                                    n=0
-                                    if topbarrier.collidingWith(top): 
-                                        n+=1    
-                            if m>0 and paddle.vy>=0: 
-                                    paddle.vy= -paddle.vy
-                                    top.vy=-top.vy
-                                    one.vy=-one.vy
-                                    two.vy=-two.vy
-                                    three.vy=-three.vy
-                                
-                            if n>0 and paddle.vy!=0: 
-                                    paddle.vy= -paddle.vy
-                                    top.vy=-top.vy
-                                    one.vy=-one.vy
-                                    two.vy=-two.vy
-                                    three.vy=-three.vy
-                            else: 
-                                paddle.vy=paddle.vy
-                                top.vy=top.vy
-                                one.vy=one.vy
-                                two.vy=two.vy
-                                three.vy=three.vy
-                                
+                            for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                                m=0
+                                if bottombarrier.collidingWith(paddle): 
+                                    m+=1
+                            for topbarrier in self.getSpritesbyClass(TopBarrier):
+                                n=0
+                                if topbarrier.collidingWith(top): 
+                                    n+=1    
+                        if m>0 and paddle.vy>=0: 
+                                paddle.vy= -paddle.vy
+                                top.vy=-top.vy
                             
+                        if n>0 and paddle.vy!=0: 
+                                paddle.vy= -paddle.vy
+                                top.vy=-top.vy
+                        else: 
+                            paddle.vy=paddle.vy
+                            top.vy=top.vy
                             
-                            ball.y+=ball.vy
-                            ball.x+=ball.vx
-                            paddle.y += paddle.vy
-                            top.y += top.vy
-                            one.y += one.vy
-                            two.y += two.vy
-                            three.y += three.vy
+                        paddle.y += paddle.vy
+                        top.y += top.vy
+                        
+                        one.y += one.vy
+                        two.y += two.vy
+                        three.y += three.vy
             
 
     
@@ -228,12 +208,17 @@ class FinalProject(App):
     def odvelocity(self, event): 
             for one in self.getSpritesbyClass(One):
                 one.vy = 5
+            
     def odvelocity2(self, event): 
             for one in self.getSpritesbyClass(One):
                 one.vy = 0
+            
+    
     def ouvelocity(self, event): 
             for one in self.getSpritesbyClass(One):
                 one.vy = -5
+            
+            
     def ouvelocity2(self, event): 
             for one in self.getSpritesbyClass(One):
                 one.vy = 0 
@@ -241,12 +226,17 @@ class FinalProject(App):
     def twdvelocity(self, event): 
             for two in self.getSpritesbyClass(Two):
                 two.vy = 5
+            
     def twdvelocity2(self, event): 
             for two in self.getSpritesbyClass(Two):
                 two.vy = 0
+            
+    
     def twuvelocity(self, event): 
             for two in self.getSpritesbyClass(Two):
                 two.vy = -5
+            
+            
     def twuvelocity2(self, event): 
             for two in self.getSpritesbyClass(Two):
                 two.vy = 0
@@ -254,24 +244,28 @@ class FinalProject(App):
     def thdvelocity(self, event): 
         for three in self.getSpritesbyClass(Three):
             three.vy = 5
+            
     def thdvelocity2(self, event): 
             for three in self.getSpritesbyClass(Three):
                 three.vy = 0
+            
+    
     def thuvelocity(self, event): 
             for three in self.getSpritesbyClass(Three):
                 three.vy = -5
+            
+            
     def thuvelocity2(self, event): 
             for three in self.getSpritesbyClass(Three):
                 three.vy = 0
-    
     def mouse(self, event):
             self.asset[0]= event.x
             self.asset[1] = event.y
             
     def ball(self, event):
-        for r in FinalProject.getSpritesbyClass(Ball):
-            r.destroy()
         Ball((self.asset[0], self.asset[1]))
-
+    
+        
+            
 myapp = FinalProject()
 myapp.run()
