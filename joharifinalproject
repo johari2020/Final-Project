@@ -7,8 +7,8 @@ Credit: Meggie, Noah
 from ggame import App, Color, LineStyle, Sprite, RectangleAsset, CircleAsset, EllipseAsset, PolygonAsset, ImageAsset, Frame
 myapp = App()
 
-from math import floor
-
+from math import floor, cos, sin, radians
+from random import randint
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 800
 
@@ -41,12 +41,14 @@ class Paddle(Sprite):
         self.vy = 0
         super().__init__(Paddle.asset, position)
         
+
 class Ball(Sprite): 
     
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
-        self.vx = 0 
-        self.vy = 0
+        ang= radians(randint(-45,45))
+        self.vx = 2*cos(ang)
+        self.vy = 2*sin(ang)
         super().__init__(Ball.asset, position)
         
 class TopBarrier(Sprite): 
@@ -159,32 +161,34 @@ class FinalProject(App):
                                     n=0
                                     if topbarrier.collidingWith(top): 
                                         n+=1    
-                            if m>0 and paddle.vy>=0: 
-                                    paddle.vy= -paddle.vy
-                                    top.vy=-top.vy
-                                    one.vy=-one.vy
-                                    two.vy=-two.vy
-                                    three.vy=-three.vy
+                                if m>0 and paddle.vy>=0: 
+                                        paddle.vy= -paddle.vy
+                                        top.vy=-top.vy
+                                        one.vy=-one.vy
+                                        two.vy=-two.vy
+                                        three.vy=-three.vy
+                                    
+                                if n>0 and paddle.vy!=0: 
+                                        paddle.vy= -paddle.vy
+                                        top.vy=-top.vy
+                                        one.vy=-one.vy
+                                        two.vy=-two.vy
+                                        three.vy=-three.vy
+                                else: 
+                                    paddle.vy=paddle.vy
+                                    top.vy=top.vy
+                                    one.vy=one.vy
+                                    two.vy=two.vy
+                                    three.vy=three.vy
+                                    
+                                paddle.y += paddle.vy
+                                top.y += top.vy
                                 
-                            if n>0 and paddle.vy!=0: 
-                                    paddle.vy= -paddle.vy
-                                    top.vy=-top.vy
-                                    one.vy=-one.vy
-                                    two.vy=-two.vy
-                                    three.vy=-three.vy
-                            else: 
-                                paddle.vy=paddle.vy
-                                top.vy=top.vy
-                                one.vy=one.vy
-                                two.vy=two.vy
-                                three.vy=three.vy
-                                
-                            paddle.y += paddle.vy
-                            top.y += top.vy
-                            
-                            one.y += one.vy
-                            two.y += two.vy
-                            three.y += three.vy
+                                one.y += one.vy
+                                two.y += two.vy
+                                three.y += three.vy
+                                ball.y += ball.vy
+                                ball.x += ball.vx
             
 
     
