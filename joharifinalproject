@@ -347,7 +347,7 @@ class FinalProject(App):
     def 2tdvelocity2(self, event): 
             for top2 in self.getSpritesbyClass(Top2):
                 top2.vy = 0
-    def 2tuvelocity(self, event): 
+    def 2tuveloci  ty(self, event): 
             for top2 in self.getSpritesbyClass(Top2):
                 top2.vy = -5
     def 2tuvelocity2(self, event): 
@@ -355,17 +355,17 @@ class FinalProject(App):
                 top2.vy = 0
 # one velocity2        
     def 2odvelocity(self, event): 
-            for one in self.getSpritesbyClass(One2):
-                one.vy = 5
+            for one2 in self.getSpritesbyClass(One2):
+                one2.vy = 5
             
     def 2odvelocity2(self, event): 
-            for one in self.getSpritesbyClass(One2):
-                one.vy = 0
+            for one2 in self.getSpritesbyClass(One2):
+                one2.vy = 0
             
     
     def 2ouvelocity(self, event): 
-            for one in self.getSpritesbyClass(One2):
-                one.vy = -5
+            for one2 in self.getSpritesbyClass(One2):
+                one2.vy = -5
             
             
     def 2ouvelocity2(self, event): 
