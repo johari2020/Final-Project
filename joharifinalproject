@@ -41,6 +41,13 @@ class Paddle(Sprite):
         self.vy = 0
         super().__init__(Paddle.asset, position)
         
+class Paddle2(Sprite):
+    
+    asset = RectangleAsset(15, 70, thinline, blue)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Paddle2.asset, position)
 
 class Ball(Sprite): 
     
@@ -96,6 +103,39 @@ class Three(Sprite):
         self.vx = 0 
         self.vy = 0
         super().__init__(Three.asset, position)
+
+class Top2(Sprite): 
+    
+    asset = RectangleAsset(15, 5, noline, green)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Top2.asset, position)
+
+
+class One2(Sprite): 
+    
+    asset = RectangleAsset(3, 23, noline, black)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(One2.asset, position)
+
+class Two2(Sprite): 
+    
+    asset = RectangleAsset(3, 23, noline, white)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Two2.asset, position)
+        
+class Three2(Sprite): 
+
+    asset = RectangleAsset(3, 23, noline, black)
+    def __init__(self, position):
+        self.vx = 0 
+        self.vy = 0
+        super().__init__(Three2.asset, position)
         
 
 class FinalProject(App):
@@ -113,6 +153,12 @@ class FinalProject(App):
         One((952,220))
         Two((952,243))
         Three((952,269))
+        
+        Paddle2((8,220))
+        Top2((10,220))
+        One2((10,220))
+        Two2((10,243))
+        Three2((10,269))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
         FinalProject.listenKeyEvent('keydown', 'b', self.ball)
