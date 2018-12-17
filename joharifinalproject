@@ -54,8 +54,8 @@ class Ball(Sprite):
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
         ang= radians(randint(-40,40))
-        self.vx = 2*cos(ang)
-        self.vy = 2*sin(ang)
+        self.vx = 3*cos(ang)
+        self.vy = 3*sin(ang)
         super().__init__(Ball.asset, position)
         
 class TopBarrier(Sprite): 
@@ -266,6 +266,7 @@ class FinalProject(App):
                                                             mm+=1
                                                     for topbarrier in self.getSpritesbyClass(TopBarrier):
                                                         nn=0
+                                                        
                                                         if topbarrier.collidingWith(ttop): 
                                                             nn+=1    
                                                     if mm>0 and ppaddle.vy>=0: 
@@ -300,16 +301,16 @@ class FinalProject(App):
                                                         b3+=1   
                                                     
                                                     if b1>0: 
-                                                        ball.vx = 2*cos(135)
-                                                        ball.vy = 2*sin(135)
+                                                        ball.vx = 3*cos(135)
+                                                        ball.vy = 3*sin(135)
                                                     
                                                     if b2>0: 
-                                                        ball.vx = 2*cos(180)
-                                                        ball.vy = 2*sin(180)
+                                                        ball.vx = 3*cos(180)
+                                                        ball.vy = 3*sin(180)
                                                         
                                                     if b3>0: 
-                                                        ball.vx = 2*cos(215)
-                                                        ball.vy = 2*sin(215)
+                                                        ball.vx = 3*cos(200)
+                                                        ball.vy = 3*sin(200)
                                                     
                                                     else: 
                                                         ball.vx = ball.vx
