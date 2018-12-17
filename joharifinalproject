@@ -287,7 +287,7 @@ class FinalProject(App):
                                                         ttwo.vy=ttwo.vy
                                                         tthree.vy=tthree.vy
                                                         
-                                                        
+                                                    
                                                     
                                                     
                                                     paddle.y += paddle.vy
