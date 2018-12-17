@@ -53,7 +53,7 @@ class Ball(Sprite):
     
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
-        ang= radians(randint(-45,45))
+        ang= radians(randint(-40,40))
         self.vx = 2*cos(ang)
         self.vy = 2*sin(ang)
         super().__init__(Ball.asset, position)
@@ -159,11 +159,10 @@ class FinalProject(App):
         One2((10,220))
         Two2((10,243))
         Three2((10,269))
-        #Ball((500, 200))
+        Ball((500, 200))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
         
-        FinalProject.listenMouseEvent('keydown', 'b', self.ball)
 
         
         FinalProject.listenKeyEvent('keydown', 'up arrow', self.uvelocity)
