@@ -187,6 +187,34 @@ class FinalProject(App):
         FinalProject.listenKeyEvent('keyup', 'up arrow', self.thuvelocity2)
         FinalProject.listenKeyEvent('keydown', 'down arrow', self.thdvelocity)
         FinalProject.listenKeyEvent('keyup', 'down arrow', self.thdvelocity2)
+        
+        
+        
+        
+        FinalProject.listenKeyEvent('keydown', 'w', self.puvelocity)
+        FinalProject.listenKeyEvent('keyup', 'w', self.puvelocity2)
+        FinalProject.listenKeyEvent('keydown', 's', self.pdvelocity)
+        FinalProject.listenKeyEvent('keyup', 's', self.pdvelocity2)
+        
+        FinalProject.listenKeyEvent('keydown', 'w', self.ptuvelocity)
+        FinalProject.listenKeyEvent('keyup', 'w', self.ptuvelocity2)
+        FinalProject.listenKeyEvent('keydown', 's', self.ptdvelocity)
+        FinalProject.listenKeyEvent('keyup', 's', self.ptdvelocity2)
+        
+        FinalProject.listenKeyEvent('keydown', 'w', self.pouvelocity)
+        FinalProject.listenKeyEvent('keyup', 'w', self.pouvelocity2)
+        FinalProject.listenKeyEvent('keydown', 's', self.podvelocity)
+        FinalProject.listenKeyEvent('keyup', 's', self.podvelocity2)
+        
+        FinalProject.listenKeyEvent('keydown', 'w', self.ptwuvelocity)
+        FinalProject.listenKeyEvent('keyup', 'w', self.ptwuvelocity2)
+        FinalProject.listenKeyEvent('keydown', 's', self.ptwdvelocity)
+        FinalProject.listenKeyEvent('keyup', 's', self.ptwdvelocity2)
+        
+        FinalProject.listenKeyEvent('keydown', 'w', self.pthuvelocity)
+        FinalProject.listenKeyEvent('keyup', 'w', self.pthuvelocity2)
+        FinalProject.listenKeyEvent('keydown', 's', self.pthdvelocity)
+        FinalProject.listenKeyEvent('keyup', 's', self.pthdvelocity2)
     
     def step(self):
         for paddle in self.getSpritesbyClass(Paddle):
@@ -194,47 +222,50 @@ class FinalProject(App):
                 for one in self.getSpritesbyClass(One):
                     for two in self.getSpritesbyClass(Two):
                         for three in self.getSpritesbyClass(Three):
-                            for ball in self.getSpritesbyClass(Ball): 
-                                
-                                
-                                
-                            
-                                for bottombarrier in self.getSpritesbyClass(BottomBarrier):
-                                    m=0
-                                    if bottombarrier.collidingWith(paddle): 
-                                        m+=1
-                                for topbarrier in self.getSpritesbyClass(TopBarrier):
-                                    n=0
-                                    if topbarrier.collidingWith(top): 
-                                        n+=1    
-                                if m>0 and paddle.vy>=0: 
-                                        paddle.vy= -paddle.vy
-                                        top.vy=-top.vy
-                                        one.vy=-one.vy
-                                        two.vy=-two.vy
-                                        three.vy=-three.vy
+                            for ppaddle in self.getSpritesbyClass(Paddle2):
+                                for oone in self.getSpritesbyClass(One2):
+                                    for ttwo in self.getSpritesbyClass(Two2):
+                                        for tthree in self.getSpritesbyClass(Three2):
+                                        for ball in self.getSpritesbyClass(Ball): 
+                                        
+                                        
                                     
-                                if n>0 and paddle.vy!=0: 
-                                        paddle.vy= -paddle.vy
-                                        top.vy=-top.vy
-                                        one.vy=-one.vy
-                                        two.vy=-two.vy
-                                        three.vy=-three.vy
-                                else: 
-                                    paddle.vy=paddle.vy
-                                    top.vy=top.vy
-                                    one.vy=one.vy
-                                    two.vy=two.vy
-                                    three.vy=three.vy
-                                    
-                                paddle.y += paddle.vy
-                                top.y += top.vy
-                                
-                                one.y += one.vy
-                                two.y += two.vy
-                                three.y += three.vy
-                                ball.y += ball.vy
-                                ball.x += ball.vx
+                                        for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                                            m=0
+                                            if bottombarrier.collidingWith(paddle): 
+                                                m+=1
+                                        for topbarrier in self.getSpritesbyClass(TopBarrier):
+                                            n=0
+                                            if topbarrier.collidingWith(top): 
+                                                n+=1    
+                                        if m>0 and paddle.vy>=0: 
+                                                paddle.vy= -paddle.vy
+                                                top.vy=-top.vy
+                                                one.vy=-one.vy
+                                                two.vy=-two.vy
+                                                three.vy=-three.vy
+                                            
+                                        if n>0 and paddle.vy!=0: 
+                                                paddle.vy= -paddle.vy
+                                                top.vy=-top.vy
+                                                one.vy=-one.vy
+                                                two.vy=-two.vy
+                                                three.vy=-three.vy
+                                        else: 
+                                            paddle.vy=paddle.vy
+                                            top.vy=top.vy
+                                            one.vy=one.vy
+                                            two.vy=two.vy
+                                            three.vy=three.vy
+                                            
+                                        paddle.y += paddle.vy
+                                        top.y += top.vy
+                                        
+                                        one.y += one.vy
+                                        two.y += two.vy
+                                        three.y += three.vy
+                                        ball.y += ball.vy
+                                        ball.x += ball.vx
             
 
     
@@ -325,86 +356,86 @@ class FinalProject(App):
                 
                 
 #up velocity of paddle2    
-    def 2uvelocity(self, event): 
+    def puvelocity(self, event): 
             for paddle2 in self.getSpritesbyClass(Paddle2):
                 paddle2.vy = -5
-    def 2uvelocity2(self, event): 
+    def puvelocity2(self, event): 
             for paddle2 in self.getSpritesbyClass(Paddle2):
                 paddle2.vy = 0
     
 #down velocity of paddle2
-    def 2dvelocity(self, event): 
+    def pdvelocity(self, event): 
             for paddle2 in self.getSpritesbyClass(Paddle2):
                 paddle2.vy = 5
-    def 2dvelocity2(self, event): 
+    def pdvelocity2(self, event): 
             for paddle2 in self.getSpritesbyClass(Paddle2):
                 paddle2.vy = 0
     
 #top velocity2
-    def 2tdvelocity(self, event): 
+    def ptdvelocity(self, event): 
             for top2 in self.getSpritesbyClass(Top2):
                 top2.vy = 5
-    def 2tdvelocity2(self, event): 
+    def ptdvelocity2(self, event): 
             for top2 in self.getSpritesbyClass(Top2):
                 top2.vy = 0
-    def 2tuveloci  ty(self, event): 
+    def ptuvelocity(self, event): 
             for top2 in self.getSpritesbyClass(Top2):
                 top2.vy = -5
-    def 2tuvelocity2(self, event): 
+    def ptuvelocity2(self, event): 
             for top2 in self.getSpritesbyClass(Top2):
                 top2.vy = 0
 # one velocity2        
-    def 2odvelocity(self, event): 
+    def podvelocity(self, event): 
             for one2 in self.getSpritesbyClass(One2):
                 one2.vy = 5
             
-    def 2odvelocity2(self, event): 
+    def podvelocity2(self, event): 
             for one2 in self.getSpritesbyClass(One2):
                 one2.vy = 0
             
     
-    def 2ouvelocity(self, event): 
+    def pouvelocity(self, event): 
             for one2 in self.getSpritesbyClass(One2):
                 one2.vy = -5
             
             
-    def 2ouvelocity2(self, event): 
+    def pouvelocity2(self, event): 
             for one in self.getSpritesbyClass(One2):
                 one.vy = 0 
 #two velocity2
-    def 2twdvelocity(self, event): 
+    def ptwdvelocity(self, event): 
             for two2 in self.getSpritesbyClass(Two2):
                 two2.vy = 5
             
-    def 2twdvelocity2(self, event): 
+    def ptwdvelocity2(self, event): 
             for two2 in self.getSpritesbyClass(Two2):
                 two2.vy = 0
             
     
-    def 2twuvelocity(self, event): 
+    def ptwuvelocity(self, event): 
             for two2 in self.getSpritesbyClass(Two2):
                 two2.vy = -5
             
             
-    def 2twuvelocity2(self, event): 
+    def ptwuvelocity2(self, event): 
             for two2 in self.getSpritesbyClass(Two2):
                 two2.vy = 0
 #three velocity2
-    def 2thdvelocity(self, event): 
+    def pthdvelocity(self, event): 
         for three2 in self.getSpritesbyClass(Three2):
             three2.vy = 5
             
-    def 2thdvelocity2(self, event): 
+    def pthdvelocity2(self, event): 
             for three2 in self.getSpritesbyClass(Three2):
                 three2.vy = 0
             
     
-    def 2thuvelocity(self, event): 
+    def pthuvelocity(self, event): 
             for three2 in self.getSpritesbyClass(Three2):
                 three2.vy = -5
             
             
-    def 2thuvelocity2(self, event): 
+    def pthuvelocity2(self, event): 
             for three2 in self.getSpritesbyClass(Three2):
                 three2.vy = 0
     def mouse(self, event):
