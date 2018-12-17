@@ -226,46 +226,81 @@ class FinalProject(App):
                                 for oone in self.getSpritesbyClass(One2):
                                     for ttwo in self.getSpritesbyClass(Two2):
                                         for tthree in self.getSpritesbyClass(Three2):
-                                            for ball in self.getSpritesbyClass(Ball): 
+                                            for ttop in self.getSpritesbyClass(Top2):
+                                                for ball in self.getSpritesbyClass(Ball): 
                                             
-                                            
-                                        
-                                                for bottombarrier in self.getSpritesbyClass(BottomBarrier):
-                                                    m=0
-                                                    if bottombarrier.collidingWith(paddle): 
-                                                        m+=1
-                                                for topbarrier in self.getSpritesbyClass(TopBarrier):
-                                                    n=0
-                                                    if topbarrier.collidingWith(top): 
-                                                        n+=1    
-                                                if m>0 and paddle.vy>=0: 
-                                                        paddle.vy= -paddle.vy
-                                                        top.vy=-top.vy
-                                                        one.vy=-one.vy
-                                                        two.vy=-two.vy
-                                                        three.vy=-three.vy
+                                                    for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                                                        m=0
+                                                        if bottombarrier.collidingWith(paddle): 
+                                                            m+=1
+                                                    for topbarrier in self.getSpritesbyClass(TopBarrier):
+                                                        n=0
+                                                        if topbarrier.collidingWith(top): 
+                                                            n+=1    
+                                                    if m>0 and paddle.vy>=0: 
+                                                            paddle.vy= -paddle.vy
+                                                            top.vy=-top.vy
+                                                            one.vy=-one.vy
+                                                            two.vy=-two.vy
+                                                            three.vy=-three.vy
+                                                        
+                                                    if n>0 and paddle.vy!=0: 
+                                                            paddle.vy= -paddle.vy
+                                                            top.vy=-top.vy
+                                                            one.vy=-one.vy
+                                                            two.vy=-two.vy
+                                                            three.vy=-three.vy
+                                                    else: 
+                                                        paddle.vy=paddle.vy
+                                                        top.vy=top.vy
+                                                        one.vy=one.vy
+                                                        two.vy=two.vy
+                                                        three.vy=three.vy
+                                                        
+                                                        
+                                                    for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                                                        mm=0
+                                                        if bottombarrier.collidingWith(ppaddle): 
+                                                            mm+=1
+                                                    for topbarrier in self.getSpritesbyClass(TopBarrier):
+                                                        nn=0
+                                                        if topbarrier.collidingWith(ttop): 
+                                                            nn+=1    
+                                                    if mm>0 and ppaddle.vy>=0: 
+                                                            ppaddle.vy= -ppaddle.vy
+                                                            ttop.vy=-ttop.vy
+                                                            oone.vy=-oone.vy
+                                                            ttwo.vy=-ttwo.vy
+                                                            tthree.vy=-tthree.vy
+                                                        
+                                                    if nn>0 and ppaddle.vy!=0: 
+                                                            ppaddle.vy= -ppaddle.vy
+                                                            ttop.vy=-ttop.vy
+                                                            one.vy=-oone.vy
+                                                            ttwo.vy=-ttwo.vy
+                                                            tthree.vy=-tthree.vy
+                                                    else: 
+                                                        ppaddle.vy=ppaddle.vy
+                                                        ttop.vy=ttop.vy
+                                                        oone.vy=oone.vy
+                                                        ttwo.vy=ttwo.vy
+                                                        tthree.vy=tthree.vy
+                                                        
+                                                    paddle.y += paddle.vy
+                                                    top.y += top.vy
                                                     
-                                                if n>0 and paddle.vy!=0: 
-                                                        paddle.vy= -paddle.vy
-                                                        top.vy=-top.vy
-                                                        one.vy=-one.vy
-                                                        two.vy=-two.vy
-                                                        three.vy=-three.vy
-                                                else: 
-                                                    paddle.vy=paddle.vy
-                                                    top.vy=top.vy
-                                                    one.vy=one.vy
-                                                    two.vy=two.vy
-                                                    three.vy=three.vy
+                                                    one.y += one.vy
+                                                    two.y += two.vy
+                                                    three.y += three.vy
                                                     
-                                                paddle.y += paddle.vy
-                                                top.y += top.vy
-                                                
-                                                one.y += one.vy
-                                                two.y += two.vy
-                                                three.y += three.vy
-                                                ball.y += ball.vy
-                                                ball.x += ball.vx
+                                                    ppaddle.y += ppaddle.vy
+                                                    ttop.y += ttop.vy
+                                                    oone.y += oone.vy
+                                                    ttwo.y += ttwo.vy
+                                                    tthree.y += tthree.vy
+                                                    
+                                                    ball.y += ball.vy
+                                                    ball.x += ball.vx
             
 
     
