@@ -159,9 +159,11 @@ class FinalProject(App):
         One2((10,220))
         Two2((10,243))
         Three2((10,269))
-        Ball((500, 200))
+        #Ball((500, 200))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
+        
+        FinalProject.listenMouseEvent('keydown', 'b', self.ball)
 
         
         FinalProject.listenKeyEvent('keydown', 'up arrow', self.uvelocity)
@@ -287,7 +289,33 @@ class FinalProject(App):
                                                         ttwo.vy=ttwo.vy
                                                         tthree.vy=tthree.vy
                                                         
+                                                    b1 = 0 
+                                                    b2 = 0
+                                                    b3 = 0
                                                     
+                                                    if ball.collidingWith(one):
+                                                        b1+=1
+                                                    if ball.collidingWith(two):
+                                                        b2+=1
+                                                    if ball.collidingWith(three):
+                                                        b3+=1   
+                                                    
+                                                    if b1>0: 
+                                                        ball.vx = 2*cos(135)
+                                                        ball.vy = 2*sin(135)
+                                                    
+                                                    if b2>0: 
+                                                        ball.vx = 2*cos(180)
+                                                        ball.vy = 2*sin(180)
+                                                        
+                                                    if b3>0: 
+                                                        ball.vx = 2*cos(215)
+                                                        ball.vy = 2*sin(215)
+                                                    
+                                                    else: 
+                                                        ball.vx = ball.vx
+                                                        ball.vy = ball.vy
+                                            
                                                     
                                                     
                                                     paddle.y += paddle.vy
