@@ -159,9 +159,10 @@ class FinalProject(App):
         One2((10,220))
         Two2((10,243))
         Three2((10,269))
+        Ball((500, 200))
         
         FinalProject.listenMouseEvent('mousemove', self.mouse) 
-        FinalProject.listenKeyEvent('keydown', 'b', self.ball)
+
         
         FinalProject.listenKeyEvent('keydown', 'up arrow', self.uvelocity)
         FinalProject.listenKeyEvent('keyup', 'up arrow', self.uvelocity2)
@@ -286,6 +287,9 @@ class FinalProject(App):
                                                         ttwo.vy=ttwo.vy
                                                         tthree.vy=tthree.vy
                                                         
+                                                        
+                                                    
+                                                    
                                                     paddle.y += paddle.vy
                                                     top.y += top.vy
                                                     
