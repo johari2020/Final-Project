@@ -3,7 +3,7 @@ joharifinalproject.py
 Author: Johari 
 Credit: Meggie, Noah 
 """
-
+print("hi")
 from ggame import App, Color, LineStyle, Sprite, RectangleAsset, CircleAsset, EllipseAsset, PolygonAsset, ImageAsset, Frame
 myapp = App()
 
@@ -32,6 +32,8 @@ blueline = LineStyle(2, blue)
 redline = LineStyle(1, red)
 greenline = LineStyle(1, green)
 gridline = LineStyle(1, grey)
+
+
 
 class Paddle(Sprite):
     
@@ -226,50 +228,50 @@ class FinalProject(App):
                                 for oone in self.getSpritesbyClass(One2):
                                     for ttwo in self.getSpritesbyClass(Two2):
                                         for tthree in self.getSpritesbyClass(Three2):
-                                        for ball in self.getSpritesbyClass(Ball): 
+                                            for ball in self.getSpritesbyClass(Ball): 
                                         
                                         
                                     
-                                        for bottombarrier in self.getSpritesbyClass(BottomBarrier):
-                                            m=0
-                                            if bottombarrier.collidingWith(paddle): 
-                                                m+=1
-                                        for topbarrier in self.getSpritesbyClass(TopBarrier):
-                                            n=0
-                                            if topbarrier.collidingWith(top): 
-                                                n+=1    
-                                        if m>0 and paddle.vy>=0: 
-                                                paddle.vy= -paddle.vy
-                                                top.vy=-top.vy
-                                                one.vy=-one.vy
-                                                two.vy=-two.vy
-                                                three.vy=-three.vy
-                                            
-                                        if n>0 and paddle.vy!=0: 
-                                                paddle.vy= -paddle.vy
-                                                top.vy=-top.vy
-                                                one.vy=-one.vy
-                                                two.vy=-two.vy
-                                                three.vy=-three.vy
-                                        else: 
-                                            paddle.vy=paddle.vy
-                                            top.vy=top.vy
-                                            one.vy=one.vy
-                                            two.vy=two.vy
-                                            three.vy=three.vy
-                                            
-                                        paddle.y += paddle.vy
-                                        top.y += top.vy
-                                        
-                                        one.y += one.vy
-                                        two.y += two.vy
-                                        three.y += three.vy
-                                        ball.y += ball.vy
-                                        ball.x += ball.vx
-            
+                                                for bottombarrier in self.getSpritesbyClass(BottomBarrier):
+                                                    m=0
+                                                    if bottombarrier.collidingWith(paddle): 
+                                                        m+=1
+                                                for topbarrier in self.getSpritesbyClass(TopBarrier):
+                                                    n=0
+                                                    if topbarrier.collidingWith(top): 
+                                                        n+=1    
+                                                if m>0 and paddle.vy>=0: 
+                                                        paddle.vy= -paddle.vy
+                                                        top.vy=-top.vy
+                                                        one.vy=-one.vy
+                                                        two.vy=-two.vy
+                                                        three.vy=-three.vy
+                                                    
+                                                if n>0 and paddle.vy!=0: 
+                                                        paddle.vy= -paddle.vy
+                                                        top.vy=-top.vy
+                                                        one.vy=-one.vy
+                                                        two.vy=-two.vy
+                                                        three.vy=-three.vy
+                                                else: 
+                                                    paddle.vy=paddle.vy
+                                                    top.vy=top.vy
+                                                    one.vy=one.vy
+                                                    two.vy=two.vy
+                                                    three.vy=three.vy
+                                                    
+                                                paddle.y += paddle.vy
+                                                top.y += top.vy
+                                                
+                                                one.y += one.vy
+                                                two.y += two.vy
+                                                three.y += three.vy
+                                                ball.y += ball.vy
+                                                ball.x += ball.vx
+                
 
     
-        
+ 
 #up velocity of paddle    
     def uvelocity(self, event): 
             for paddle in self.getSpritesbyClass(Paddle):
@@ -448,7 +450,5 @@ class FinalProject(App):
         Ball((self.asset[0], self.asset[1]))
     
     
-        
-            
 myapp = FinalProject()
 myapp.run()
