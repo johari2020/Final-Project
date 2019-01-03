@@ -3,7 +3,7 @@ joharifinalproject.py
 Author: Johari 
 Credit: Meggie, Noah 
 """
-print("hi")
+
 from ggame import App, Color, LineStyle, Sprite, RectangleAsset, CircleAsset, EllipseAsset, PolygonAsset, ImageAsset, Frame
 myapp = App()
 
@@ -56,8 +56,8 @@ class Ball(Sprite):
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
         ang= radians(randint(-45,45))
-        self.vx = 2*cos(ang)
-        self.vy = 2*sin(ang)
+        self.vx = 4*cos(ang)
+        self.vy = 4*sin(ang)
         super().__init__(Ball.asset, position)
         
 class TopBarrier(Sprite): 
