@@ -56,8 +56,8 @@ class Ball(Sprite):
     asset = CircleAsset(15, noline, black)
     def __init__(self, position):
         ang= radians(randint(-45,45))
-        self.vx = 4*cos(ang)
-        self.vy = 4*sin(ang)
+        self.vx = 6*cos(ang)
+        self.vy = 6*sin(ang)
         super().__init__(Ball.asset, position)
         
 class TopBarrier(Sprite): 
