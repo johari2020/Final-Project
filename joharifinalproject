@@ -253,6 +253,21 @@ class FinalProject(App):
                                                             nn+=1  
                                                         if topbarrier.collidingWith(ball): 
                                                             tb+=1 
+                                                    
+                                                    rb=0
+                                                    if paddle.collidingWith(ball):
+                                                        rb += 1
+                                                    lb=0
+                                                    if ppaddle.collidingWith(ball):
+                                                        lb+=1
+                                                    
+                                                    if rb>0 or lb>0: 
+                                                        ball.vx=-ball.vx
+                                                        
+                                                    else: 
+                                                        ball.vy=ball.vy
+                                                        ball.vx=ball.vx
+                                                        
                                                     if m>0 and paddle.vy>=0: 
                                                             paddle.vy= -paddle.vy
                                                             top.vy=-top.vy
